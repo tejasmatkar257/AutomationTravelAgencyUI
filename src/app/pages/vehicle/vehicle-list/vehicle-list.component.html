@@ -1,0 +1,77 @@
+<div class="container">
+    <div class="row align-items-center">
+        <div class="col">
+            <h1>Vehicle List</h1>
+        </div>
+        <div class="col-auto">
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Vehicle</button>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Add Vehicle</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form #form="ngForm" (submit)="onSubmit()">
+                    <label for="vehicleNumber" class="form-label">Vehicle Number</label>
+                    <input type="text" class="form-control" id="vehicleNumber" placeholder="Vehicle Number"
+                        [(ngModel)]="model.vehicleNumber" [ngModelOptions]="{ standalone: true }">
+                    <label for="vehicleName" class="form-label">Vehicle Name</label>
+                    <input type="text" class="form-control" id="vehicleName" placeholder="Vehicle Name"
+                        [(ngModel)]="model.vehicleName" [ngModelOptions]="{ standalone: true }">
+                    <label for="seatingCapacity" class="form-label">Seating Capacity</label>
+                    <input type="number" class="form-control" id="seatingCapacity" placeholder="Seating Capacity"
+                        [(ngModel)]="model.seatingCapacity" [ngModelOptions]="{ standalone: true }">
+                    <div class="row">
+                        <div class="col">
+                            <label for="driverId" class="form-label">DriverId</label>
+                            <select class="form-select" id="driverId" [(ngModel)]="model.driverId" [ngModelOptions]="{ standalone: true }">
+                                <option selected>Select Driver Id</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <label for="vehicleType" class="form-label">Vehicle Type</label>
+                            <select class="form-select" id="vehicleType" [(ngModel)]="model.vehicleType" [ngModelOptions]="{ standalone: true }">
+                                <option selected>Select Vehicle Type</option>
+                                <option value="Bus">Bus</option>
+                                <option value="Car">Car</option>
+                                <option value="Van">Van</option>
+                            </select>
+                        </div>
+                    </div>
+                    <label for="farePerKm" class="form-label">FarePerKm</label>
+                    <input type="number" class="form-control" id="farePerKm" placeholder="FarePerKm" [(ngModel)]="model.farePerKm" [ngModelOptions]="{ standalone: true }">
+                    <br><button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- <div class="container mt-5">
+    <div class="card mb-3" *ngFor="let vehicle of vehicles">
+        <div class="card-body">
+            <h5 class="card-title">Vehicle Number: {{ vehicle.vehicleNumber }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Vehicle Name: {{ vehicle.vehicleName }}</h6>
+            <p class="card-text">Seating Capacity: {{ vehicle.seatingCapacity }}</p>
+            <p class="card-text">Driver Id: {{ vehicle.driverId }}</p>
+            <p class="card-text">Vehicle Type: {{ vehicle.vehicleType }}</p>
+            <p class="card-text">Fare Per Km: {{ vehicle.farePerKm }}</p>
+            <button class="btn btn-primary">Edit</button>
+            <button class="btn btn-danger">Delete</button>
+        </div>
+    </div>
+</div> -->
