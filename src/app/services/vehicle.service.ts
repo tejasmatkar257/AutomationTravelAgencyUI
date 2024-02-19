@@ -13,4 +13,8 @@ export class VehicleService {
   addVehicle(model: Vehicle): Observable<void>{
     return this.http.post<void>('https://localhost:7256/api/Vehicle', model);
   }
+
+  getAllVehicles(): Observable<Vehicle[]> {
+    return this.http.get<Vehicle[]>("https://localhost:7256/api/Vehicle");
+  }
 }

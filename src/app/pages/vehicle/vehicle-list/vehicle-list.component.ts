@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Vehicle } from 'src/app/models/vehicle.model';
 import { VehicleService } from 'src/app/services/vehicle.service';
 
@@ -7,9 +7,10 @@ import { VehicleService } from 'src/app/services/vehicle.service';
   templateUrl: './vehicle-list.component.html',
   styleUrls: ['./vehicle-list.component.css']
 })
-export class VehicleListComponent {
+export class VehicleListComponent implements OnInit {
 
   model: Vehicle;
+  vehicles!: Vehicle[];
 
   constructor(private vehicleService:VehicleService) {
     this.model = {
@@ -20,6 +21,18 @@ export class VehicleListComponent {
       farePerKm: 0,
       seatingCapacity: 0
     };
+  }
+  ngOnInit(): void {
+    this.loadVehicles();
+  }
+  
+  loadVehicles() {
+    this.vehicleService.getAllVehicles().subscribe({
+      next: (vehicles) => {
+        this.vehicles = vehicles;
+      },
+      error: (error) => console.log('error while fetching vehicles', error)
+    });
   }
 
   onSubmit() {
